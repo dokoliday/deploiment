@@ -3,18 +3,17 @@
 const items = [
   {
     id: 'HAMMER-123423454637',
-    name: 'tutu',
+    name: 'titi',
   },
   {
     id: 'NAILS-56785435463782',
-    name: 'titi',
+    name: 'tutu',
   },
 ];
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    console.log(process.env.SHOULD_SEEDS)
-    if ("###########################", process.env.SHOULD_SEEDS === true) {
+    if (process.env.SHOULD_SEEDS === true) {
       return new Promise()
     } else {
       return queryInterface.bulkInsert('Items', items, {});
