@@ -24,7 +24,9 @@ module.exports = {
 
   down: (queryInterface, Sequelize) => {
     if(process.env.SHOULD_SEEDS==="false"){
-      return
+      return new Promise(function(resolve, reject) {
+        return'ok'
+      });
     }else{
     return queryInterface.bulkDelete(
       'Items',
