@@ -2,12 +2,12 @@
 
 const items = [
   {
-    id: 'HAMMER-1234234',
-    name: 'bob',
+    id: 'HAMMER-123423454637',
+    name: 'bab',
   },
   {
-    id: 'NAILS-5678543',
-    name: 'bib',
+    id: 'NAILS-56785435463782',
+    name: 'boub',
   },
 ];
 
