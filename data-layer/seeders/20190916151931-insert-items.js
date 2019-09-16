@@ -4,21 +4,28 @@
 
 const items = [
   {
-    id: 'HAMMER-12',
-    name: 'titix',
+    id: 'HAMER-1224',
+    name: 'titixXXXXXXXXXXXXXXX',
   },
   {
-    id: 'NAILS-56',
-    name: 'tutux',
+    id: 'NAS-56',
+    name: 'tutuxXXXXXXXXXXXXXXX',
   },
 ];
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
+    if(process.env.SHOULD_SEEDS==="false"){
+      return new Promise()
+    }else{
     return queryInterface.bulkInsert('Items', items, {});
+    }
   },
 
   down: (queryInterface, Sequelize) => {
+    if(process.env.SHOULD_SEEDS==="false"){
+      return new Promise()
+    }else{
     return queryInterface.bulkDelete(
       'Items',
       {
@@ -26,5 +33,6 @@ module.exports = {
       },
       {}
     );
+    }
   },
 };
