@@ -1,26 +1,36 @@
 'use strict';
 
+const items = [
+  {
+    id: 'HAMMER-1234234',
+    name: 'bob',
+  },
+  {
+    id: 'NAILS-5678543',
+    name: 'bib',
+  },
+];
+
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    /*
-      Add altering commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkInsert('People', [{
-        name: 'John Doe',
-        isBetaMember: false
-      }], {});
-    */
+    if (process.env.SOULD_SEEDS === true) {
+      return new Promise()
+    } else {
+      return queryInterface.bulkInsert('Items', items, {});
+    }
   },
 
   down: (queryInterface, Sequelize) => {
-    /*
-      Add reverting commands here.
-      Return a promise to correctly handle asynchronicity.
-
-      Example:
-      return queryInterface.bulkDelete('People', null, {});
-    */
-  }
+    if (process.env.SOULD_SEEDS === true) {
+      return new Promise()
+    } else {
+      return queryInterface.bulkDelete(
+        'Items',
+        {
+          id: { [Sequelize.Op.in]: items.map(item => item.id) },
+        },
+        {}
+      );
+    }
+  },
 };
