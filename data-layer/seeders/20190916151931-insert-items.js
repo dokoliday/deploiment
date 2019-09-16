@@ -16,7 +16,9 @@ const items = [
 module.exports = {
   up: (queryInterface, Sequelize) => {
     if(process.env.SHOULD_SEEDS==="false"){
-      return 
+      return new Promise(function(resolve, reject) {
+        return'ok'
+      });
     }else{
     return queryInterface.bulkInsert('Items', items, {});
     }
