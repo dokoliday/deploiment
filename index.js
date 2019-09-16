@@ -2,14 +2,20 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors')
 const { Item } = require('./data-layer/models');
-
+const path = require('path');
 
 const app = express();
 app.use(cors())
 
-app.get('/api/items', async (req, res) => {
-  res.send({ items: await Item.findAll() });
-});
+const PATH_TO_WEB_APP_BUILD = 'web-app/build';
+app.use(express.static(path.join(__dirname, PATH_TO_WEB_APP_BUILD)));
+app
+  .get('/api/items', async (req, res) => {
+    res.send({ items: await Item.findAll() });
+  })
+  .get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, PATH_TO_WEB_APP_BUILD, 'index.html'));
+  });
 
 const PORT = process.env.PORT || 8007;
 
