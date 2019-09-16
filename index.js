@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors')
 const { Item } = require('./data-layer/models');
 const path = require('path');
+const testenv = process.env.SHOULD_SEEDS
 
 const app = express();
 app.use(cors())
@@ -20,6 +21,6 @@ app
 const PORT = process.env.PORT || 8007;
 
 app.listen(PORT, () => {
-  console.log(`Listening on port ${PORT}.`);
+  console.log(`Listening on port ${PORT}.${testenv}`);
 });
 

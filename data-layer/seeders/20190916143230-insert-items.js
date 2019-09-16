@@ -13,7 +13,8 @@ const items = [
 
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    if (process.env.SOULD_SEEDS === true) {
+    console.log(process.env.SOULD_SEEDS)
+    if ("###########################", process.env.SOULD_SEEDS === true) {
       return new Promise()
     } else {
       return queryInterface.bulkInsert('Items', items, {});

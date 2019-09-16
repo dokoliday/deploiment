@@ -3,11 +3,11 @@
 const items = [
   {
     id: 'HAMMER-1234',
-    name: 'Hammer',
+    name: 'Hamer',
   },
   {
     id: 'NAILS-5678',
-    name: 'Nails',
+    name: 'Nals',
   },
 ];
 
