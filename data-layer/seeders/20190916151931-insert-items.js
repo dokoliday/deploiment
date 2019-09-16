@@ -16,7 +16,7 @@ const items = [
 module.exports = {
   up: (queryInterface, Sequelize) => {
     if(process.env.SHOULD_SEEDS==="false"){
-      return new Promise()
+      return 
     }else{
     return queryInterface.bulkInsert('Items', items, {});
     }
@@ -24,7 +24,7 @@ module.exports = {
 
   down: (queryInterface, Sequelize) => {
     if(process.env.SHOULD_SEEDS==="false"){
-      return new Promise()
+      return
     }else{
     return queryInterface.bulkDelete(
       'Items',
