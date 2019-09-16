@@ -6,12 +6,20 @@ const { Item } = require('./data-layer/models');
 
 const app = express();
 app.use(cors())
-app.get('/api/items', async (req, res) => {
-  res.send({ items: await Item.findAll() });
-});
+
+const PATH_TO_WEB_APP_BUILD = 'web-app/build';
+app.use(express.static(path.join(__dirname, PATH_TO_WEB_APP_BUILD)));
+app
+  .get('/api/items', async (req, res) => {
+    res.send({ items: await Item.findAll() });
+  })
+  .get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, PATH_TO_WEB_APP_BUILD, 'index.html'));
+  });
 
 const PORT = process.env.PORT || 8007;
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}.`);
 });
+
