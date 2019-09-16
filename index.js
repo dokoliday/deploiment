@@ -7,7 +7,7 @@ const path = require('path');
 const app = express();
 app.use(cors())
 
-const PATH_TO_WEB_APP_BUILD = 'web-app/build';
+const PATH_TO_WEB_APP_BUILD = 'wep-app/build';
 app.use(express.static(path.join(__dirname, PATH_TO_WEB_APP_BUILD)));
 app
   .get('/api/items', async (req, res) => {
