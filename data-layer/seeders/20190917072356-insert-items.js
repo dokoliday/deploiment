@@ -16,5 +16,5 @@ const items = [
 
 module.exports = {
   up: seedUp('Items',items),
-  down: seedDown('Items',tems)
+  down: seedDown('Items',items)
 };
